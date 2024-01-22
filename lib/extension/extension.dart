@@ -34,6 +34,21 @@ extension Styles on Widget {
     return Center(child: this);
   }
 
+  Widget shadow() {
+    return Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 0.3,
+              offset: Offset(0, 1),
+            ),
+          ],
+        ),
+        child: this);
+  }
+
   Widget padding([EdgeInsets defaultValue = const EdgeInsets.all(20)]) {
     return Padding(
       padding: defaultValue,
@@ -47,6 +62,10 @@ extension Styles on Widget {
       fit: fit,
       child: this,
     );
+  }
+
+  Widget safeArea() {
+    return SafeArea(child: this);
   }
 
   Widget container({

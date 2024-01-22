@@ -5,6 +5,7 @@ class LayoutColor {
 
   static Color black000000 = const Color(0xFF000000);
   static Color black3A3A3A = const Color(0xFF3A3A3A);
+  static Color black212121 = const Color(0xFF212121);
 
   static Color greyA5A5A5 = const Color(0xFFA5A5A5);
   static Color greyE6E6E6 = const Color(0xFFE6E6E6);

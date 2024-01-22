@@ -49,8 +49,8 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
             return MaterialApp(
               key: UniqueKey(),
               debugShowCheckedModeBanner: false,
-              localizationsDelegates: context.localizationDelegates,
-              locale: context.locale,
+              // localizationsDelegates: context.localizationDelegates,
+              // locale: context.locale,
               home: initPage,
               routes: {
                 loginPageRoute: (context) => const LoginPage(),

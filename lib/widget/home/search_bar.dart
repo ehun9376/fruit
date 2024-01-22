@@ -16,33 +16,36 @@ class SearchBarRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SearchBar(
-          shadowColor: MaterialStateProperty.resolveWith<Color>(
-              (states) => LayoutColor.clear),
-          textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-              (states) => TextStyle(color: LayoutColor.orangeF57C00)),
-          leading: SimpleImage(
-            icon: Icons.search,
-            color: LayoutColor.orangeF57C00,
-          ).padding(const EdgeInsets.only(left: 10)),
-          onSubmitted: (value) {},
-        )
-            .sizedBox(height: 35)
-            .padding(const EdgeInsets.only(right: 10))
-            .flexible(),
-        SimpleImage(
-          icon: Icons.history,
-          iconSize: 30,
-          color: Colors.white,
-        ).padding(EdgeInsets.only(right: 10)).inkWell(onTap: () {}),
-        SimpleImage(
-          icon: Icons.notifications_none_outlined,
-          iconSize: 30,
-          color: Colors.white,
-        ).padding(EdgeInsets.only(right: 10)).inkWell(onTap: () {})
-      ],
-    ).padding();
+    return Container(
+      color: LayoutColor.orangeF57C00,
+      child: Row(
+        children: [
+          SearchBar(
+            shadowColor: MaterialStateProperty.resolveWith<Color>(
+                (states) => LayoutColor.clear),
+            textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+                (states) => TextStyle(color: LayoutColor.orangeF57C00)),
+            leading: SimpleImage(
+              icon: Icons.search,
+              color: LayoutColor.orangeF57C00,
+            ).padding(const EdgeInsets.only(left: 10)),
+            onSubmitted: (value) {},
+          )
+              .sizedBox(height: 35)
+              .padding(const EdgeInsets.only(right: 10))
+              .flexible(),
+          const SimpleImage(
+            icon: Icons.history,
+            iconSize: 30,
+            color: Colors.white,
+          ).padding(const EdgeInsets.only(right: 10)).inkWell(onTap: () {}),
+          const SimpleImage(
+            icon: Icons.notifications_none_outlined,
+            iconSize: 30,
+            color: Colors.white,
+          ).padding(const EdgeInsets.only(right: 10)).inkWell(onTap: () {})
+        ],
+      ).padding(),
+    );
   }
 }
