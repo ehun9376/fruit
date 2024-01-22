@@ -6,7 +6,10 @@ class LayoutColor {
   static Color black000000 = const Color(0xFF000000);
   static Color black3A3A3A = const Color(0xFF3A3A3A);
 
-  static Color grayA5A5A5 = const Color(0xFFA5A5A5);
+  static Color greyA5A5A5 = const Color(0xFFA5A5A5);
+  static Color greyE6E6E6 = const Color(0xFFE6E6E6);
+  static Color gray515151 = const Color(0xFF515151);
+  static Color greyD4D4D4 = const Color(0xFFD4D4D4);
 
   static Color pinkEC588A = const Color(0xFFEC588A);
   static Color pinkEFC6D9 = const Color(0xFFEFC6D9);
@@ -55,4 +58,6 @@ class LayoutColor {
 
   static Color orangeF57C00 = const Color(0xFFF57C00);
   static Color orangeF6DAB7 = const Color(0xFFF6DAB7);
+  static Color orangeFFF3E0 = const Color(0xFFFFF3E0);
+  static Color orangeFB8C00 = const Color(0xFFFB8C00);
 }

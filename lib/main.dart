@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit/app.dart';
+import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/lauguage/lauguage.dart';
 
 void main() async {
@@ -9,7 +10,7 @@ void main() async {
 
   // await FirebaseServiece.init();
 
-  // await GetItService.initialize();
+  await GetItService.initialize();
   // await getIt<DynamicLinkService>().init();
   // await getIt<LocalNotificationCenter>().init();
 
@@ -18,7 +19,7 @@ void main() async {
   runApp(EasyLocalization(
     supportedLocales: Language.values.map((e) => e.locale).toList(),
     path: "assets/translations",
-    fallbackLocale: Language.en.locale,
+    fallbackLocale: Language.zh.locale,
     child: const MainApp(),
   ));
 }

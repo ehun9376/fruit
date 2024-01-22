@@ -47,7 +47,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                 size: const Size(24, 24),
                 color: _selectedIndex == index
                     ? LayoutColor.orangeF57C00
-                    : LayoutColor.orangeF57C00.withAlpha(76),
+                    : LayoutColor.greyD4D4D4,
               ),
               if (text.isNotEmpty)
                 SimpleText(
@@ -57,7 +57,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   fontWeight: FontWeight.w600,
                   textColor: _selectedIndex == index
                       ? LayoutColor.orangeF57C00
-                      : LayoutColor.orangeF57C00.withAlpha(76),
+                      : LayoutColor.greyD4D4D4,
                 ).sizedBox(height: 20),
             ],
           ),
