@@ -27,7 +27,7 @@ class TrackListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          color: LayoutColor.whiteFFFFFFF,
+          color: LayoutColor.whiteFFFFFF,
         ),
         title: SimpleText(
           text: "追蹤清單",
@@ -36,7 +36,7 @@ class TrackListPage extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
         leading: Container(),
-        backgroundColor: LayoutColor.whiteFFFFFFF,
+        backgroundColor: LayoutColor.whiteFFFFFF,
       ),
       body: ChangeNotifierProvider.value(
           value: viewModel,

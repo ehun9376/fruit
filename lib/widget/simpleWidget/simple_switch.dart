@@ -33,7 +33,7 @@ class _SimpleSwitchState extends State<SimpleSwitch> {
   Widget build(BuildContext context) {
     return FlutterSwitch(
       activeColor: LayoutColor.pinkEC588A,
-      activeToggleColor: LayoutColor.whiteFFFFFFF,
+      activeToggleColor: LayoutColor.whiteFFFFFF,
       activeSwitchBorder: Border.all(color: LayoutColor.pinkEC588A, width: 2),
       width: widget.width ?? 45,
       height: widget.height ?? 25,

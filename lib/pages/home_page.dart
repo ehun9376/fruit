@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                     const EdgeInsets.only(top: 15),
                   ),
                   const TagRow(),
-                ].column().container(color: LayoutColor.whiteFFFFFFF),
+                ].column().container(color: LayoutColor.whiteFFFFFF),
                 [
                   CategoryTitleRow(
                     title: '當季限定',

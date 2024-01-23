@@ -12,7 +12,7 @@ class ItemListCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: LayoutColor.whiteFFFFFFF,
+        color: LayoutColor.whiteFFFFFF,
         borderRadius: BorderRadius.circular(5),
         boxShadow: [
           BoxShadow(

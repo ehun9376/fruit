@@ -23,7 +23,7 @@ class LayoutColor {
   static Color purple932FB5 = const Color(0xFF932fb5);
   static Color purple734CC6 = const Color(0xFF734CC6);
 
-  static Color whiteFFFFFFF = const Color(0xFFFFFFFF);
+  static Color whiteFFFFFF = const Color(0xFFFFFFFF);
   static Color whiteF0F0F0 = const Color(0xFFF0F0F0);
   static Color whiteF5F5F5 = const Color(0xFFF5F5F5);
 

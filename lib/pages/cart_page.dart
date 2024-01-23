@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
+import 'package:fruit/widget/cart/cart_check_row.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
 
 class CartPage extends StatelessWidget {
@@ -9,6 +11,9 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          flexibleSpace: Container(
+            color: LayoutColor.whiteFFFFFF,
+          ),
           title: SimpleText(
             text: "購物車",
             fontSize: 17,
@@ -17,8 +22,13 @@ class CartPage extends StatelessWidget {
           ),
           leading: Container(),
         ),
-        body: const Center(
-          child: Text("TrackListPage"),
+        body: Column(
+          children: [
+            ListView().flexible(),
+            CartCheckRow(
+              totaPrice: 100,
+            )
+          ],
         ));
   }
 }

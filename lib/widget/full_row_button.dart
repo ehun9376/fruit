@@ -33,18 +33,18 @@ class FullRowButton extends StatelessWidget {
     switch (type) {
       case FullRowButtonType.orangeBgWhiteTitle:
         backgroudColor = LayoutColor.orangeF57C00;
-        titleColor = LayoutColor.whiteFFFFFFF;
+        titleColor = LayoutColor.whiteFFFFFF;
         borderColor = LayoutColor.orangeF57C00;
         radius = 25;
         fontSize = 16;
       case FullRowButtonType.whiteBgOrangeTitle:
-        backgroudColor = LayoutColor.whiteFFFFFFF;
+        backgroudColor = LayoutColor.whiteFFFFFF;
         titleColor = LayoutColor.orangeF57C00;
         borderColor = LayoutColor.orangeF57C00;
         radius = 25;
         fontSize = 16;
       case FullRowButtonType.whiteBgRedTitle:
-        backgroudColor = LayoutColor.whiteFFFFFFF;
+        backgroudColor = LayoutColor.whiteFFFFFF;
         titleColor = LayoutColor.redFF5722;
         borderColor = LayoutColor.greyA5A5A5.withOpacity(0.3);
         radius = 15;

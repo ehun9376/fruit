@@ -24,7 +24,7 @@ class SearchBarRow extends StatelessWidget {
         children: [
           SearchBar(
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                (states) => LayoutColor.whiteFFFFFFF),
+                (states) => LayoutColor.whiteFFFFFF),
             shadowColor: MaterialStateProperty.resolveWith<Color>(
                 (states) => LayoutColor.clear),
             textStyle: MaterialStateProperty.resolveWith<TextStyle?>(

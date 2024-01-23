@@ -26,7 +26,7 @@ class _SimpleCheckBoxState extends State<SimpleCheckBox> {
     return Checkbox(
       activeColor: LayoutColor.orangeF57C00,
       hoverColor: LayoutColor.orangeF57C00,
-      checkColor: LayoutColor.whiteFFFFFFF,
+      checkColor: LayoutColor.whiteFFFFFF,
       side: BorderSide(
         color: LayoutColor.orangeF57C00,
         width: 1.5,
