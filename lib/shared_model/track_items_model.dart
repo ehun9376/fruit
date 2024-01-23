@@ -30,6 +30,10 @@ class TrackItemsModol extends ChangeNotifier {
   List<ItemModel> _historyItems = [];
 
   List<ItemModel> get historyItems => _historyItems;
+  set historyItems(List<ItemModel> newValue) {
+    _historyItems = newValue;
+    notifyListeners();
+  }
 
 //TODO: - TrackAPI
 }

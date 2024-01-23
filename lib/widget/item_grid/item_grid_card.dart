@@ -35,7 +35,11 @@ class ItemGridCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               textColor: LayoutColor.black212121,
               align: TextAlign.left,
-            ).flexible().widgetWithRow().padding(const EdgeInsets.all(5)),
+            )
+                .flexible()
+                .widgetWithRow()
+                .padding(const EdgeInsets.all(5))
+                .flexible(),
             [
               SimpleText(
                 text: "\$${itemModel.price ?? 0}/盒",

@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
-import 'package:fruit/layout/layout_guides.dart';
-import 'package:fruit/widget/simpleWidget/simple_text.dart';
+import 'package:fruit/widget/track/track_tagdart.dart';
 
 enum TrackType { track, history }
+
+extension TrackTypeValue on TrackType {
+  String get title {
+    switch (this) {
+      case TrackType.track:
+        return "追蹤商品";
+      case TrackType.history:
+        return "瀏覽紀錄";
+      default:
+        return "";
+    }
+  }
+}
 
 class TrackTagRow extends StatefulWidget {
   const TrackTagRow(
@@ -30,46 +42,26 @@ class _TrackTagRowState extends State<TrackTagRow> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          children: [
-            const SimpleText(
-              text: "追蹤商品",
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            if (trackType == TrackType.track)
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                height: 3,
-                color: LayoutColor.orangeFB8C00,
-              )
-          ],
-        ).inkWell(onTap: () {
-          setState(() {
-            trackType = TrackType.track;
-            widget.onTypeChange.call(TrackType.track);
-          });
-        }).flexible(),
-        Column(
-          children: [
-            const SimpleText(
-              text: "瀏覽紀錄",
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            if (trackType == TrackType.history)
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                height: 3,
-                color: LayoutColor.orangeFB8C00,
-              )
-          ],
-        ).inkWell(onTap: () {
-          setState(() {
-            trackType = TrackType.history;
-            widget.onTypeChange.call(TrackType.history);
-          });
-        }).flexible()
+        TrackTag(
+          trackType: TrackType.track,
+          currentTrackType: trackType,
+          onTypeChange: (type) {
+            setState(() {
+              trackType = type;
+              widget.onTypeChange.call(type);
+            });
+          },
+        ).flexible(),
+        TrackTag(
+          trackType: TrackType.history,
+          currentTrackType: trackType,
+          onTypeChange: (type) {
+            setState(() {
+              trackType = type;
+              widget.onTypeChange.call(type);
+            });
+          },
+        ).flexible(),
       ],
     );
   }

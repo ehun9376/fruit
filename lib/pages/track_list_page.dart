@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
-import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/model/item.dart';
 import 'package:fruit/shared_model/track_items_model.dart';
