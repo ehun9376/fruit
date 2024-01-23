@@ -9,6 +9,7 @@ import 'package:fruit/pages/login_page.dart';
 import 'package:fruit/pages/user_info.dart';
 import 'package:fruit/routes.dart';
 import 'package:fruit/shared_model/app_environment_model.dart';
+import 'package:fruit/shared_model/track_items_model.dart';
 import 'package:provider/provider.dart';
 
 class MainApp extends StatefulWidget {
@@ -20,6 +21,7 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   final AppEnvironmentModel appEnvironmentModel = getIt<AppEnvironmentModel>();
+  final TrackItemsModol trackItemsModol = getIt<TrackItemsModol>();
 
   @override
   void initState() {
@@ -39,6 +41,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
         providers: [
           ChangeNotifierProvider<AppEnvironmentModel>.value(
               value: appEnvironmentModel),
+          ChangeNotifierProvider<TrackItemsModol>.value(value: trackItemsModol),
         ],
         child: Selector<AppEnvironmentModel, AppUser?>(
           selector: (context, model) => model.currentUser,

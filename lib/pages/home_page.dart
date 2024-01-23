@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
+import 'package:fruit/model/item.dart';
 import 'package:fruit/widget/home/ad_swiper.dart';
 import 'package:fruit/widget/home/category_title_row.dart';
 import 'package:fruit/widget/home/search_bar.dart';
@@ -42,7 +43,17 @@ class HomePage extends StatelessWidget {
                     onMoreTap: () {},
                   ).padding(
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20)),
-                  ItemGrid().padding(const EdgeInsets.symmetric(horizontal: 20))
+                  ItemGrid(
+                    scrollEnable: false,
+                    data: List.generate(
+                        50,
+                        (index) => ItemModel(
+                            name: '商品名稱$index',
+                            description: '商品描述$index',
+                            image: '商品名稱$index',
+                            price: 100,
+                            itemID: '$index')).toList().cast<ItemModel>(),
+                  ).padding(const EdgeInsets.symmetric(horizontal: 20))
                 ].column().container(color: LayoutColor.greyF6F6F6)
               ],
             ).flexible(),

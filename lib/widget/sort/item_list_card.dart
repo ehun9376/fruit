@@ -58,17 +58,20 @@ class ItemListCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SimpleImage(
-                    imageName: "ic_tab_shop.png",
-                    size: const Size(20, 20),
-                    color: LayoutColor.grey969696,
+                    imageName: "ic_tab_shop_plus.png",
+                    size: const Size(22, 20),
+                    color: LayoutColor
+                        .grey969696, //LayoutColor.redED4427 LayoutColor.grey969696
                   ),
                   const SizedBox(
                     width: 20,
                   ),
                   SimpleImage(
-                    imageName: "ic_tab_list.png",
+                    imageName:
+                        "ic_tab_list_full.png", //ic_tab_list_full ic_tab_list
                     size: const Size(20, 20),
-                    color: LayoutColor.grey969696,
+                    color: LayoutColor
+                        .redED4427, //LayoutColor.redED4427 LayoutColor.grey969696
                   ),
                 ],
               )

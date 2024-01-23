@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
 
@@ -45,16 +46,15 @@ class SimpleDropdownMenuState<T extends MenuItemModel>
   @override
   Widget build(BuildContext context) {
     return DropdownButton<T>(
-      isExpanded: true,
-      padding: const EdgeInsets.only(left: 5),
-      borderRadius: BorderRadius.circular(15),
+      alignment: Alignment.center,
+      // icon: null,
+      // iconSize: 0,
+      // isDense: true,
+      padding: EdgeInsets.zero,
       hint: const SimpleText(
         text: "Please Select",
       ),
-      underline: Container(
-        height: 1,
-        color: LayoutColor.grey969696,
-      ),
+      underline: Container(),
       value: _dropdownItems.isNotEmpty
           ? _dropdownItems.firstWhere(
               (element) => element.displayName == _selectedItem?.displayName)
@@ -70,7 +70,13 @@ class SimpleDropdownMenuState<T extends MenuItemModel>
       items: _dropdownItems.map((item) {
         return DropdownMenuItem<T>(
           value: item,
-          child: SimpleText(text: item.displayName),
+          child: SimpleText(
+            text: item.displayName,
+            align: TextAlign.center,
+            textColor: LayoutColor.black212121,
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+          ).padding(const EdgeInsets.symmetric(vertical: 10)),
         );
       }).toList(),
     );

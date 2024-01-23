@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/home/search_bar.dart';
-import 'package:fruit/widget/sort/item_card.dart';
+import 'package:fruit/widget/sort/item_list_card.dart';
+import 'package:fruit/widget/sort/sort_filter.dart';
 
 class SortPage extends StatelessWidget {
   const SortPage({super.key});
@@ -21,6 +22,7 @@ class SortPage extends StatelessWidget {
           onSearchBarSubmitted: (searchText) {},
           showButtons: false,
         ),
+        const SortFiltterRow(),
         ListView.builder(
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {

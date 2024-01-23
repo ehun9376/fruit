@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/model/item.dart';
 import 'package:fruit/widget/item_grid/item_grid_card.dart';
 
 class ItemGrid extends StatelessWidget {
-  final List<String> data = List.generate(50, (index) => 'Item $index');
+  final List<ItemModel> data;
 
-  ItemGrid({super.key});
+  const ItemGrid({super.key, required this.scrollEnable, required this.data});
+
+  final bool scrollEnable;
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(), // 禁用滚动
+      physics: scrollEnable ? null : const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 8.0,
@@ -19,7 +22,9 @@ class ItemGrid extends StatelessWidget {
       ),
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return const ItemGridCard();
+        return ItemGridCard(
+          itemModel: data[index],
+        );
       },
     );
   }

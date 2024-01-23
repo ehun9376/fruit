@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/model/option.dart';
+import 'package:fruit/pages/cart_page.dart';
 import 'package:fruit/pages/home_page.dart';
 import 'package:fruit/pages/sort_page.dart';
+import 'package:fruit/pages/track_list_page.dart';
 import 'package:fruit/pages/user_info.dart';
 import 'package:fruit/widget/main_home/bottom_navigation.dart';
 
@@ -32,12 +34,12 @@ class _MainHomePageState extends State<MainHomePage> {
       Option(
         imageName: "ic_tab_list.png",
         title: "追蹤清單",
-        content: Container(),
+        content: TrackListPage(),
       ),
       Option(
         imageName: "ic_tab_shop.png",
         title: "購物車",
-        content: Container(),
+        content: const CartPage(),
       ),
       Option(
         imageName: "user_info.png",
