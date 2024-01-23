@@ -29,7 +29,7 @@ class AdSwiper extends StatelessWidget {
             return SimpleImage(
               imageName: "test_ad_1.png",
               size: const Size(100, 100),
-              cornerRadius: 5,
+              cornerRadius: BorderRadius.circular(5),
             );
           },
           viewportFraction: 0.85,

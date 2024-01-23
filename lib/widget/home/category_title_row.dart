@@ -18,9 +18,12 @@ class CategoryTitleRow extends StatelessWidget {
         Row(
           children: [
             Container(
-              color: LayoutColor.orangeF57C00,
-              height: 15,
+              height: 20,
               width: 5,
+              decoration: BoxDecoration(
+                color: LayoutColor.orangeF57C00,
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+              ),
             ),
             const SizedBox(
               width: 5,
@@ -38,6 +41,8 @@ class CategoryTitleRow extends StatelessWidget {
             SimpleText(
               text: "查看更多",
               textColor: LayoutColor.grey969696,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
             ),
             SimpleImage(
               icon: Icons.arrow_forward_ios,

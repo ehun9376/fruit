@@ -108,6 +108,7 @@ flutter:
     - assets/date_gift.png
     - assets/company_gift.png
     - assets/drink.png
+    - assets/ic_but_im.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

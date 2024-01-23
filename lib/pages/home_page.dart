@@ -3,9 +3,9 @@ import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/home/ad_swiper.dart';
 import 'package:fruit/widget/home/category_title_row.dart';
-import 'package:fruit/widget/home/item_grid.dart';
 import 'package:fruit/widget/home/search_bar.dart';
 import 'package:fruit/widget/home/tag_row.dart';
+import 'package:fruit/widget/item_grid/item_grid.dart';
 import 'package:fruit/widget/simpleWidget/simple_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,20 +35,22 @@ class HomePage extends StatelessWidget {
                   ),
                   const TagRow(),
                 ].column().container(color: LayoutColor.whiteFFFFFFF),
-                CategoryTitleRow(
-                  title: '當季限定',
-                  onMoreTap: () {},
-                ).padding(const EdgeInsets.symmetric(horizontal: 20)),
-                ItemGrid().padding(
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10))
+                [
+                  CategoryTitleRow(
+                    title: '當季限定',
+                    onMoreTap: () {},
+                  ).padding(
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20)),
+                  ItemGrid().padding(const EdgeInsets.symmetric(horizontal: 20))
+                ].column().container(color: LayoutColor.greyF6F6F6)
               ],
             ).flexible(),
           ],
         ).safeArea(),
         floatingActionButton: SimpleButton(
           buttontitle: "快速下單",
-          buttonIcon: Icons.person,
-          iconSize: 17,
+          imageName: "ic_but_im.png",
+          imageSize: const Size(17, 17),
           segmented: Segmented.leftToRight,
           iconColor: LayoutColor.orangeFB8C00,
           titleColor: LayoutColor.orangeFB8C00,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fruit/layout/layout_guides.dart';
 
 class SimpleImage extends StatelessWidget {
   final Color? backgroudColor;
@@ -10,7 +11,7 @@ class SimpleImage extends StatelessWidget {
   final File? imageFile;
 
   final Size? size;
-  final double? cornerRadius;
+  final BorderRadius? cornerRadius;
   final double? borderWidth;
 
   final IconData? icon;
@@ -41,12 +42,12 @@ class SimpleImage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: backgroudColor,
-          borderRadius: BorderRadius.circular(cornerRadius ?? 0),
+          borderRadius: cornerRadius ?? BorderRadius.circular(0),
           border: Border.all(
               width: borderWidth ?? 0.0,
               color: borderColor ?? Colors.transparent)),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(cornerRadius ?? 0),
+        borderRadius: cornerRadius ?? BorderRadius.circular(0),
         child: imageFile != null
             ? Image.file(
                 imageFile!,
@@ -83,19 +84,17 @@ class SimpleImage extends StatelessWidget {
         color: color, errorBuilder:
             (BuildContext context, Object exception, StackTrace? stackTrace) {
       debugPrint("Image loading failed: $exception");
-      return Image.asset(
-        "assets/defaultHeadImage.png",
-        height: size?.height,
-        width: size?.width,
-        fit: fit ?? BoxFit.fill,
+      return Center(
+        child: CircularProgressIndicator(
+          color: LayoutColor.orangeF57C00,
+        ),
       );
     }, loadingBuilder: (context, child, loadingProgress) {
       if (loadingProgress == null) return child;
-      return Image.asset(
-        "assets/defaultHeadImage.png",
-        height: size?.height,
-        width: size?.width,
-        fit: fit ?? BoxFit.fill,
+      return Center(
+        child: CircularProgressIndicator(
+          color: LayoutColor.orangeF57C00,
+        ),
       );
     });
   }
