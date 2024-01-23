@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
               onSearchBarSubmitted: (searchText) {},
               onHistoryClick: () {},
               onNoticeClick: () {},
+              showButtons: true,
             ),
             ListView(
               children: [

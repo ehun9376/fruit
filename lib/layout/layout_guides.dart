@@ -25,6 +25,7 @@ class LayoutColor {
 
   static Color whiteFFFFFFF = const Color(0xFFFFFFFF);
   static Color whiteF0F0F0 = const Color(0xFFF0F0F0);
+  static Color whiteF5F5F5 = const Color(0xFFF5F5F5);
 
   static const Color colorblue199_233_239 = Color.fromARGB(255, 199, 223, 239);
   static const Color blue63_101_187 = Color.fromARGB(255, 63, 101, 187);

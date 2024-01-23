@@ -7,12 +7,14 @@ class SearchBarRow extends StatelessWidget {
   const SearchBarRow(
       {super.key,
       required this.onSearchBarSubmitted,
-      required this.onHistoryClick,
-      required this.onNoticeClick});
+      this.onHistoryClick,
+      this.onNoticeClick,
+      required this.showButtons});
 
   final Function(String) onSearchBarSubmitted;
-  final Function onHistoryClick;
-  final Function onNoticeClick;
+  final Function? onHistoryClick;
+  final Function? onNoticeClick;
+  final bool showButtons;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,8 @@ class SearchBarRow extends StatelessWidget {
       child: Row(
         children: [
           SearchBar(
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (states) => LayoutColor.whiteFFFFFFF),
             shadowColor: MaterialStateProperty.resolveWith<Color>(
                 (states) => LayoutColor.clear),
             textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
@@ -29,21 +33,29 @@ class SearchBarRow extends StatelessWidget {
               icon: Icons.search,
               color: LayoutColor.orangeF57C00,
             ).padding(const EdgeInsets.only(left: 10)),
-            onSubmitted: (value) {},
+            onSubmitted: (value) {
+              onSearchBarSubmitted.call(value);
+            },
           )
               .sizedBox(height: 35)
               .padding(const EdgeInsets.only(right: 10))
               .flexible(),
-          const SimpleImage(
-            icon: Icons.history,
-            iconSize: 30,
-            color: Colors.white,
-          ).padding(const EdgeInsets.only(right: 10)).inkWell(onTap: () {}),
-          const SimpleImage(
-            icon: Icons.notifications_none_outlined,
-            iconSize: 30,
-            color: Colors.white,
-          ).padding(const EdgeInsets.only(right: 10)).inkWell(onTap: () {})
+          if (showButtons)
+            const SimpleImage(
+              icon: Icons.history,
+              iconSize: 30,
+              color: Colors.white,
+            ).padding(const EdgeInsets.only(right: 10)).inkWell(onTap: () {
+              onHistoryClick?.call();
+            }),
+          if (showButtons)
+            const SimpleImage(
+              icon: Icons.notifications_none_outlined,
+              iconSize: 30,
+              color: Colors.white,
+            ).padding(const EdgeInsets.only(right: 10)).inkWell(onTap: () {
+              onNoticeClick?.call();
+            })
         ],
       ).padding(),
     );
