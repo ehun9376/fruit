@@ -33,7 +33,7 @@ class _TrackButtonState extends State<TrackButton> {
         } else {
           trackItemsModol.addTrackItem(widget.trackItem);
         }
-        debugPrint("TrackButton: ${widget.trackItem.name}");
+        debugPrint("TrackButton: ${widget.trackItem.itemName}");
         debugPrint(
             "TrackButton: ${trackItemsModol.isTrackItem(widget.trackItem)}");
       });

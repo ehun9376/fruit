@@ -42,6 +42,7 @@ class LayoutColor {
   static Color greyCACACA = const Color(0xFFCACACA);
   static Color greyE7E7E7 = const Color(0xFFE7E7E7);
   static Color greyF6F6F6 = const Color(0xFFF6F6F6);
+  static Color greyECECEC = const Color(0xFFECECEC);
 
   static const Color yellow205_142_51 = Color.fromARGB(255, 205, 142, 51);
   static const Color yellow253_221_124 = Color.fromARGB(255, 253, 221, 124);

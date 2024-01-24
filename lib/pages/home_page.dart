@@ -48,9 +48,9 @@ class HomePage extends StatelessWidget {
                     data: List.generate(
                         50,
                         (index) => ItemModel(
-                            name: '商品名稱$index',
+                            itemName: '商品名稱$index',
                             description: '商品描述$index',
-                            image: '商品名稱$index',
+                            imageURL: '商品名稱$index',
                             price: 100,
                             itemID: '$index')).toList().cast<ItemModel>(),
                   ).padding(const EdgeInsets.symmetric(horizontal: 20))

@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit/config.dart';
 import 'package:fruit/get_it/get_it_service.dart';
@@ -9,6 +8,7 @@ import 'package:fruit/pages/login_page.dart';
 import 'package:fruit/pages/user_info.dart';
 import 'package:fruit/routes.dart';
 import 'package:fruit/shared_model/app_environment_model.dart';
+import 'package:fruit/shared_model/cart_items_model.dart';
 import 'package:fruit/shared_model/track_items_model.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +22,7 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   final AppEnvironmentModel appEnvironmentModel = getIt<AppEnvironmentModel>();
   final TrackItemsModol trackItemsModol = getIt<TrackItemsModol>();
+  final CartItemsModel cartItemsModel = getIt<CartItemsModel>();
 
   @override
   void initState() {
@@ -42,6 +43,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           ChangeNotifierProvider<AppEnvironmentModel>.value(
               value: appEnvironmentModel),
           ChangeNotifierProvider<TrackItemsModol>.value(value: trackItemsModol),
+          ChangeNotifierProvider<CartItemsModel>.value(value: cartItemsModel),
         ],
         child: Selector<AppEnvironmentModel, AppUser?>(
           selector: (context, model) => model.currentUser,

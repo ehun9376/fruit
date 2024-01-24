@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
-import 'package:fruit/font/fonts.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/simpleWidget/simple_button.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';

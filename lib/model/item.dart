@@ -1,33 +1,49 @@
 class ItemModel {
-  String? name;
+  String? itemName;
   String? description;
-  String? image;
+  String? imageURL;
   int? price;
 
   String? itemID;
+  String? storeID;
+  String? storeName;
+
+  int quantity = 1;
+
+  bool isSelected = false;
 
   ItemModel({
-    required this.itemID,
-    required this.name,
-    required this.description,
-    required this.image,
-    required this.price,
+    this.itemID,
+    this.itemName,
+    this.description,
+    this.imageURL,
+    this.price,
+    this.storeID,
+    this.storeName,
+    this.quantity = 1,
   });
 
   ItemModel.fromJson(Map<String, dynamic> json) {
     itemID = json['itemID'];
-    name = json['name'];
+    itemName = json['name'];
     description = json['description'];
-    image = json['image'];
+    imageURL = json['image'];
     price = json['price'];
+    storeID = json['storeID'];
+    storeName = json['storeName'];
+    quantity = json['quantity'] ?? 1;
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
+      'name': itemName,
       'description': description,
-      'image': image,
+      'image': imageURL,
       'price': price,
+      'itemID': itemID,
+      'storeID': storeID,
+      'storeName': storeName,
+      'quantity': quantity,
     };
   }
 }

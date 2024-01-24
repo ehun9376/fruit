@@ -22,6 +22,12 @@ class _SimpleCheckBoxState extends State<SimpleCheckBox> {
   }
 
   @override
+  void didUpdateWidget(SimpleCheckBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    selected = widget.selected;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Checkbox(
       activeColor: LayoutColor.orangeF57C00,
@@ -42,20 +48,5 @@ class _SimpleCheckBoxState extends State<SimpleCheckBox> {
         widget.onChange(selected);
       },
     ).sizedBox(width: 26, height: 26);
-    // return SimpleImage(
-    //   icon: selected ? Icons.check : null,
-    //   color: selected ? LayoutColor.whiteFFFFFFF : null,
-    //   backgroudColor:
-    //       selected ? LayoutColor.orangeF57C00 : LayoutColor.whiteFFFFFFF,
-    //   borderColor: LayoutColor.orangeF57C00,
-    //   borderWidth: 1.5,
-    //   cornerRadius: 5,
-    //   size: const Size(24, 24),
-    // ).inkWell(onTap: () {
-    //   setState(() {
-    //     selected = !selected;
-    //   });
-    //   widget.onChange(selected);
-    // }).sizedBox(width: 24, height: 24);
   }
 }

@@ -30,7 +30,7 @@ class ItemGridCard extends StatelessWidget {
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
             ),
             SimpleText(
-              text: itemModel.name,
+              text: itemModel.itemName,
               fontSize: 14,
               fontWeight: FontWeight.w500,
               textColor: LayoutColor.black212121,

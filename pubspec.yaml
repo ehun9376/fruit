@@ -120,6 +120,9 @@ flutter:
     - assets/ic_but_im.png
     - assets/ic_tab_list_full.png
     - assets/ic_tab_shop_plus.png
+    - assets/plus.png
+    - assets/reduce.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
