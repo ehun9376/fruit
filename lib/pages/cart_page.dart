@@ -5,7 +5,7 @@ import 'package:fruit/model/item.dart';
 import 'package:fruit/shared_model/cart_items_model.dart';
 import 'package:fruit/widget/cart/cart_check_row.dart';
 import 'package:fruit/widget/cart/cart_item_card.dart';
-import 'package:fruit/widget/cart/cart_title_row.dart';
+import 'package:fruit/widget/command/title_subtitle_row.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
 import 'package:provider/provider.dart';
 
@@ -29,15 +29,18 @@ class CartPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const CartTitleRow(),
-            Selector<CartItemsModel, List<List<ItemModel>>>(
+            const TitleSubTitleRow(
+              title: "購買清單",
+            ),
+            Selector<CartItemsModel, Map<String, List<ItemModel>>>(
               selector: ((p0, p1) => p1.cartItems),
               builder: (context, value, child) {
                 return ListView.separated(
                   itemCount: value.length,
                   itemBuilder: (context, index) {
+                    var entries = value.entries.elementAt(index);
                     return CartItemCard(
-                      itemModels: value[index],
+                      itemModels: entries.value,
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit/config.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/routes.dart';
-import 'package:fruit/widget/full_row_button.dart';
+import 'package:fruit/widget/command/full_row_button.dart';
 import 'package:fruit/widget/login/third_login_button.dart';
 import 'package:fruit/widget/login/logo_slogan.dart';
 import 'package:fruit/widget/login/or_line.dart';

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
+import 'package:fruit/shared_model/cart_items_model.dart';
 import 'package:fruit/widget/simpleWidget/simple_button.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
+import 'package:provider/provider.dart';
 
 class CartCheckRow extends StatelessWidget {
   const CartCheckRow({super.key, required this.totaPrice});
@@ -27,10 +29,15 @@ class CartCheckRow extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
-                SimpleText(
-                  text: "$totaPrice",
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
+                Selector<CartItemsModel, int>(
+                  selector: (p0, p1) => p1.totalPrice,
+                  builder: (context, value, child) {
+                    return SimpleText(
+                      text: "$value",
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                    );
+                  },
                 )
               ],
             ).flexible(),

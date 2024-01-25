@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
+import 'package:fruit/model/item.dart';
+import 'package:fruit/widget/cart_button/cart_button.dart';
 import 'package:fruit/widget/simpleWidget/simple_image.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
+import 'package:fruit/widget/track_button/track_button.dart';
 
 class ItemListCard extends StatelessWidget {
   const ItemListCard({super.key});
@@ -57,22 +60,17 @@ class ItemListCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SimpleImage(
-                    imageName: "ic_tab_shop_plus.png",
-                    size: const Size(22, 20),
-                    color: LayoutColor
-                        .grey969696, //LayoutColor.redED4427 LayoutColor.grey969696
+                  CartButton(
+                    itemModel: ItemModel(
+                        storeID: "898",
+                        itemName: "ItemName",
+                        itemID: "123",
+                        price: 5000),
                   ),
                   const SizedBox(
                     width: 20,
                   ),
-                  SimpleImage(
-                    imageName:
-                        "ic_tab_list_full.png", //ic_tab_list_full ic_tab_list
-                    size: const Size(20, 20),
-                    color: LayoutColor
-                        .redED4427, //LayoutColor.redED4427 LayoutColor.grey969696
-                  ),
+                  TrackButton(trackItem: ItemModel())
                 ],
               )
             ],

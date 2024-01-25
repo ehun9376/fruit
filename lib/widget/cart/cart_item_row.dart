@@ -45,7 +45,7 @@ class CartItemRow extends StatelessWidget {
               align: TextAlign.left,
             ),
             CartCountRow(
-              defaultCount: itemModel.quantity,
+              itemModel: itemModel,
               onCountChange: (count) {
                 itemModel.quantity = count;
                 debugPrint("count: $count");
