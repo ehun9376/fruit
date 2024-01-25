@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:fruit/model/item.dart';
 
@@ -152,12 +150,12 @@ class CartItemsModel extends ChangeNotifier {
     int totalPrice = 0;
 
     cartItems.forEach((key, value) {
-      value.forEach((element) {
+      for (var element in value) {
         if (element.isSelected) {
           totalPrice += ((element.price ?? 0) * element.quantity);
           debugPrint("totalPrice: $totalPrice");
         }
-      });
+      }
     });
 
     return totalPrice;

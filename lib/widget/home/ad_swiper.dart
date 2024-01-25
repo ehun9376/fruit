@@ -41,7 +41,7 @@ class AdSwiper extends StatelessWidget {
     ).sizedBox(height: 162);
   }
 
-  List<Widget> _buildPageIndicator(List<String> photoList, int page) {
+  List<Widget> buildPageIndicator(List<String> photoList, int page) {
     var list = photoList
         .mapIndexed((index, element) => Container(
               width: 8.0,

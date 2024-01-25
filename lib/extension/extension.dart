@@ -42,7 +42,7 @@ extension Styles on Widget {
             BoxShadow(
               color: Colors.grey.withOpacity(0.1),
               spreadRadius: 0.3,
-              offset: Offset(0, 1),
+              offset: const Offset(0, 1),
             ),
           ],
         ),

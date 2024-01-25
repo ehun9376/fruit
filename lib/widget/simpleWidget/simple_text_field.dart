@@ -100,7 +100,7 @@ class SimpleTextField extends StatelessWidget {
           ),
         ),
         if (underLine != null)
-          SizedBox(
+          const SizedBox(
             height: 7,
           ),
         if (underLine != null) underLine!,

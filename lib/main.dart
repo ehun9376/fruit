@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit/app.dart';
 import 'package:fruit/get_it/get_it_service.dart';
-import 'package:fruit/lauguage/lauguage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +14,7 @@ void main() async {
   // await getIt<LocalNotificationCenter>().init();
 
   // await AppTrackingTransparency.requestTrackingAuthorization();
-  runApp(MainApp());
+  runApp(const MainApp());
   // runApp(EasyLocalization(
   //   supportedLocales: Language.values.map((e) => e.locale).toList(),
   //   path: "assets/translations",

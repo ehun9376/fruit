@@ -46,8 +46,6 @@ class LocalNotificationCenter extends ChangeNotifier {
         title,
         content,
         scheduledDate,
-
-        //TODO : - Android channel id
         const NotificationDetails(
             android: AndroidNotificationDetails(
                 'your channel id', 'your channel name',
@@ -74,8 +72,6 @@ class LocalNotificationCenter extends ChangeNotifier {
         "test",
         "tttt",
         scheduledDate,
-
-        //TODO : - Android channel id
         const NotificationDetails(
             android: AndroidNotificationDetails(
                 'your channel id', 'your channel name',
