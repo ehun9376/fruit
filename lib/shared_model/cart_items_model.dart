@@ -74,13 +74,89 @@ class CartItemsModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void selectAllForStore(String storeID) {
+    Map<String, List<ItemModel>> tempMap = Map.from(cartItems);
+
+    var targetStore = tempMap[storeID];
+
+    if (targetStore == null) {
+      return;
+    } else {
+      for (var element in targetStore) {
+        element.isSelected = true;
+      }
+    }
+
+    cartItems = tempMap;
+    totalPrice = getTotalItemsPrice();
+    notifyListeners();
+  }
+
+  void unSelectAllForStore(String storeID) {
+    Map<String, List<ItemModel>> tempMap = Map.from(cartItems);
+
+    var targetStore = tempMap[storeID];
+
+    if (targetStore == null) {
+      return;
+    } else {
+      for (var element in targetStore) {
+        element.isSelected = false;
+      }
+    }
+
+    cartItems = tempMap;
+    totalPrice = getTotalItemsPrice();
+    notifyListeners();
+  }
+
+  void selectForItem(String itemID) {
+    Map<String, List<ItemModel>> tempMap = Map.from(cartItems);
+
+    for (var element in tempMap.values) {
+      ItemModel targetItem = element.firstWhere(
+        (element) => element.itemID == itemID,
+        orElse: () => ItemModel(),
+      );
+
+      if (targetItem.itemID == itemID) {
+        targetItem.isSelected = true;
+      }
+    }
+
+    cartItems = tempMap;
+    totalPrice = getTotalItemsPrice();
+    notifyListeners();
+  }
+
+  void unSelectForItem(String itemID) {
+    Map<String, List<ItemModel>> tempMap = Map.from(cartItems);
+
+    for (var element in tempMap.values) {
+      ItemModel targetItem = element.firstWhere(
+        (element) => element.itemID == itemID,
+        orElse: () => ItemModel(),
+      );
+
+      if (targetItem.itemID == itemID) {
+        targetItem.isSelected = false;
+      }
+    }
+
+    cartItems = tempMap;
+    totalPrice = getTotalItemsPrice();
+    notifyListeners();
+  }
+
   int getTotalItemsPrice() {
     int totalPrice = 0;
 
     cartItems.forEach((key, value) {
       value.forEach((element) {
-        totalPrice += ((element.price ?? 0) * element.quantity);
-        debugPrint("totalPrice: $totalPrice");
+        if (element.isSelected) {
+          totalPrice += ((element.price ?? 0) * element.quantity);
+          debugPrint("totalPrice: $totalPrice");
+        }
       });
     });
 

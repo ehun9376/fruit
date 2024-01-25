@@ -1,27 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
+import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/model/item.dart';
+import 'package:fruit/shared_model/cart_items_model.dart';
 import 'package:fruit/widget/cart/cart_count_row.dart';
 import 'package:fruit/widget/simpleWidget/simple_checkbox.dart';
 import 'package:fruit/widget/simpleWidget/simple_image.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
+import 'package:provider/provider.dart';
 
 class CartItemRow extends StatelessWidget {
-  const CartItemRow({super.key, required this.itemModel, this.onCheckChange});
+  const CartItemRow({super.key, required this.itemModel});
 
   final ItemModel itemModel;
-  final Function(bool)? onCheckChange;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SimpleCheckBox(
-            selected: itemModel.isSelected,
-            onChange: (selected) {
-              onCheckChange?.call(selected);
-            }).padding(const EdgeInsets.only(right: 10)),
+        Selector<CartItemsModel, bool>(
+          selector: ((p0, p1) => (p1.cartItems[itemModel.storeID ?? ""] ?? [])
+              .firstWhere(
+                (element) => element.itemID == itemModel.itemID,
+                orElse: () => ItemModel(),
+              )
+              .isSelected),
+          builder: (context, value, child) {
+            return SimpleCheckBox(
+                selected: itemModel.isSelected,
+                onChange: (selected) {
+                  if (selected) {
+                    getIt<CartItemsModel>()
+                        .selectForItem(itemModel.itemID ?? "");
+                  } else {
+                    getIt<CartItemsModel>()
+                        .unSelectForItem(itemModel.itemID ?? "");
+                  }
+                }).padding(const EdgeInsets.only(right: 10));
+          },
+        ),
         const SimpleImage(
           imageURL: "https://picsum.photos/80/80",
           size: Size(85, 85),

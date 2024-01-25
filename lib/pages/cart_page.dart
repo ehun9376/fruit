@@ -41,6 +41,7 @@ class CartPage extends StatelessWidget {
                     var entries = value.entries.elementAt(index);
                     return CartItemCard(
                       itemModels: entries.value,
+                      storeID: entries.key,
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
