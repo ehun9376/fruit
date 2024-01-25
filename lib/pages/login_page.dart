@@ -23,7 +23,8 @@ class LoginPage extends StatelessWidget {
             buttonTitle: "登入",
             type: FullRowButtonType.whiteBgOrangeTitle,
             buttonAction: () {
-              navigatorKey.currentState?.pushNamed(mainHomePageRoute);
+              navigatorKey.currentState?.pushNamedAndRemoveUntil(
+                  mainHomePageRoute, (Route<dynamic> route) => false);
             },
           ),
           const SizedBox(height: 20),

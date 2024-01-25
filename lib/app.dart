@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit/config.dart';
 import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/model/app_user.dart';
+import 'package:fruit/pages/cart_page.dart';
+import 'package:fruit/pages/detail_item_page.dart';
 import 'package:fruit/pages/main_home_page.dart';
 import 'package:fruit/pages/loading_page.dart';
 import 'package:fruit/pages/login_page.dart';
@@ -62,6 +64,8 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
                 loadingPageRoute: (context) => const LoadingPage(),
                 mainHomePageRoute: (context) => const MainHomePage(),
                 userInfoPageRoute: (context) => const UserInfoPage(),
+                detailItemPageRoute: (context) => const DetailItemPage(),
+                cartItemPageRoute: (context) => const CartPage(),
               },
               navigatorKey: navigatorKey,
             );

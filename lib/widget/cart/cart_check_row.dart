@@ -7,9 +7,7 @@ import 'package:fruit/widget/simpleWidget/simple_text.dart';
 import 'package:provider/provider.dart';
 
 class CartCheckRow extends StatelessWidget {
-  const CartCheckRow({super.key, required this.totaPrice});
-
-  final int totaPrice;
+  const CartCheckRow({super.key});
 
   @override
   Widget build(BuildContext context) {

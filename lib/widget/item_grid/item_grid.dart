@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/config.dart';
+import 'package:fruit/extension/extension.dart';
 import 'package:fruit/model/item.dart';
+import 'package:fruit/routes.dart';
 import 'package:fruit/widget/item_grid/item_grid_card.dart';
 
 class ItemGrid extends StatelessWidget {
@@ -24,6 +27,13 @@ class ItemGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         return ItemGridCard(
           itemModel: data[index],
+        ).inkWell(
+          onTap: () {
+            navigatorKey.currentState?.pushNamed(
+              detailItemPageRoute,
+              arguments: data[index],
+            );
+          },
         );
       },
     );

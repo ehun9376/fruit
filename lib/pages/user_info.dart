@@ -15,7 +15,6 @@ class UserInfoPage extends StatelessWidget {
             textColor: LayoutColor.black212121,
             fontWeight: FontWeight.w600,
           ),
-          leading: Container(),
         ),
         body: const Center(
           child: Text("TrackListPage"),
