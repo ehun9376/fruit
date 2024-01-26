@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
-import 'package:fruit/widget/simpleWidget/simple_button.dart';
 import 'package:fruit/widget/simpleWidget/simple_drop_down_menu.dart';
 
 class SortFiltterRow extends StatelessWidget {

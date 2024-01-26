@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/config.dart';
+import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/simpleWidget/simple_button.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
 
@@ -14,8 +15,6 @@ void showAppSnackBar(String message) {
     )),
   ));
 }
-
-typedef CloseDialog = void Function();
 
 /// 回傳一個讀取中的Dialog Function，會先顯示Dialog，並回傳一個關閉Dialog的Function。
 Future showLoadingDialog({
@@ -58,14 +57,17 @@ showConfirmDialog(
           content: SimpleText(text: current),
           actions: [
             SimpleButton(
-              buttontitle: 'Cancel',
+              buttontitle: '取消',
+              titleColor: LayoutColor.black000000,
               buttonAction: () {
-                Navigator.of(navigatorKey.currentContext!).pop();
+                navigatorKey.currentState?.pop();
               },
             ),
             SimpleButton(
-              buttontitle: rightButton ?? 'Confirm',
+              buttontitle: rightButton ?? '確定',
+              titleColor: LayoutColor.black000000,
               buttonAction: () {
+                navigatorKey.currentState?.pop();
                 if (rightButtonOnTap != null) {
                   rightButtonOnTap();
                 }

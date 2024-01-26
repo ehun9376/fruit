@@ -5,6 +5,7 @@ import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/model/item.dart';
 import 'package:fruit/shared_model/cart_items_model.dart';
 import 'package:fruit/widget/simpleWidget/simple_image.dart';
+import 'package:fruit/widget/snack/snackbar_helper.dart';
 
 class CartButton extends StatefulWidget {
   const CartButton({super.key, required this.itemModel});
@@ -28,15 +29,12 @@ class _CartButtonState extends State<CartButton> {
       color: LayoutColor.grey969696,
     ).inkWell(onTap: () {
       setState(() {
-        // if (isSelected) {
-        //   cartItemsModol.removeCartItem(widget.itemModel);
-        // } else {
         cartItemsModol.addCartItem(widget.itemModel);
 
         debugPrint(
             "cartButton: ${widget.itemModel.itemName} ${widget.itemModel.storeName}");
-        // debugPrint("cartItemsModol: $isSelected");
       });
+      showAppSnackBar("已加入購物車");
     });
   }
 }

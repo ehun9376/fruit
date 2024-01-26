@@ -28,7 +28,7 @@ class CartPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const TitleSubTitleRow(
+            const TitleSubTitleMoreRow(
               title: "購買清單",
             ),
             Selector<CartItemsModel, Map<String, List<ItemModel>>>(
