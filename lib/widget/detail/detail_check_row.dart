@@ -4,7 +4,6 @@ import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/model/item.dart';
 import 'package:fruit/shared_model/cart_items_model.dart';
 import 'package:fruit/widget/simpleWidget/simple_button.dart';
-import 'package:fruit/widget/snack/snackbar_helper.dart';
 import 'package:fruit/widget/track_button/track_button.dart';
 
 class DetailCheckRow extends StatelessWidget {

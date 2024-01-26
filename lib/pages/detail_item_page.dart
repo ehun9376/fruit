@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:fruit/config.dart';
 import 'package:fruit/extension/extension.dart';

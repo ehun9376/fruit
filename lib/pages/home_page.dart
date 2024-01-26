@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/config.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/model/item.dart';
+import 'package:fruit/routes.dart';
 import 'package:fruit/widget/home/ad_swiper.dart';
 import 'package:fruit/widget/home/category_title_row.dart';
 import 'package:fruit/widget/home/search_bar.dart';
@@ -26,7 +28,9 @@ class HomePage extends StatelessWidget {
             SearchBarRow(
               onSearchBarSubmitted: (searchText) {},
               onHistoryClick: () {},
-              onNoticeClick: () {},
+              onNoticeClick: () {
+                navigatorKey.currentState?.pushNamed(noticePageRoute);
+              },
               showButtons: true,
             ),
             ListView(

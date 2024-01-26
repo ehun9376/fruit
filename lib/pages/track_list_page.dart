@@ -5,7 +5,7 @@ import 'package:fruit/model/item.dart';
 import 'package:fruit/shared_model/track_items_model.dart';
 import 'package:fruit/widget/item_grid/item_grid.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
-import 'package:fruit/widget/track/track_tag_row.dart';
+import 'package:fruit/widget/tabButton/tab_button_row.dart';
 import 'package:provider/provider.dart';
 
 class TrackListPageViewModel extends ChangeNotifier {
@@ -25,53 +25,54 @@ class TrackListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          color: LayoutColor.whiteFFFFFF,
+        appBar: AppBar(
+          flexibleSpace: Container(
+            color: LayoutColor.whiteFFFFFF,
+          ),
+          title: SimpleText(
+            text: "追蹤清單",
+            fontSize: 17,
+            textColor: LayoutColor.black212121,
+            fontWeight: FontWeight.w600,
+          ),
+          backgroundColor: LayoutColor.whiteFFFFFF,
         ),
-        title: SimpleText(
-          text: "追蹤清單",
-          fontSize: 17,
-          textColor: LayoutColor.black212121,
-          fontWeight: FontWeight.w600,
-        ),
-        backgroundColor: LayoutColor.whiteFFFFFF,
-      ),
-      body: ChangeNotifierProvider.value(
-          value: viewModel,
-          builder: (context, snapshot) {
-            return Column(
-              children: [
-                TrackTagRow(
-                  trackType: viewModel.trackType,
+        body: Column(
+          children: [
+            Selector<TrackListPageViewModel, TrackType>(
+              selector: (p0, p1) => p1.trackType,
+              builder: (context, value, child) {
+                return TabRow<TrackType>(
+                  types: TrackType.values,
+                  currentType: value,
                   onTypeChange: (type) {
                     viewModel.trackType = type;
                   },
-                ),
-                Selector<TrackListPageViewModel, TrackType>(
-                  selector: (p0, p1) => p1.trackType,
-                  builder: (context, value, child) {
-                    return Selector<TrackItemsModol, List<ItemModel>>(
-                        selector: (p0, p1) {
-                      if (value == TrackType.track) {
-                        return p1.trackItems;
-                      } else {
-                        return p1.historyItems;
-                      }
-                    }, builder: (context, value, child) {
-                      return ItemGrid(
-                        data: value,
-                        scrollEnable: true,
-                      )
-                          .padding()
-                          .container(color: LayoutColor.greyF6F6F6)
-                          .flexible();
-                    });
-                  },
-                )
-              ],
-            );
-          }),
-    );
+                );
+              },
+            ),
+            Selector<TrackListPageViewModel, TrackType>(
+              selector: (p0, p1) => p1.trackType,
+              builder: (context, value, child) {
+                return Selector<TrackItemsModol, List<ItemModel>>(
+                    selector: (p0, p1) {
+                  if (value == TrackType.track) {
+                    return p1.trackItems;
+                  } else {
+                    return p1.historyItems;
+                  }
+                }, builder: (context, value, child) {
+                  return ItemGrid(
+                    data: value,
+                    scrollEnable: true,
+                  )
+                      .padding()
+                      .container(color: LayoutColor.greyF6F6F6)
+                      .flexible();
+                });
+              },
+            )
+          ],
+        ).changeNotifierProvider(value: viewModel));
   }
 }

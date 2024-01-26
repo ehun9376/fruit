@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
-import 'package:fruit/widget/track/track_tag_row.dart';
+import 'package:fruit/widget/tabButton/tab_protocol.dart';
 
-class TrackTag extends StatelessWidget {
-  const TrackTag(
+class TabButton<T extends TabProtocol> extends StatelessWidget {
+  const TabButton(
       {super.key,
       required this.trackType,
       required this.currentTrackType,
       required this.onTypeChange});
 
-  final TrackType trackType;
-  final TrackType currentTrackType;
-  final Function(TrackType) onTypeChange;
+  final T trackType;
+  final T currentTrackType;
+  final Function(T) onTypeChange;
 
   @override
   Widget build(BuildContext context) {

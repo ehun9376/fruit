@@ -8,6 +8,7 @@ import 'package:fruit/pages/detail_item_page.dart';
 import 'package:fruit/pages/main_home_page.dart';
 import 'package:fruit/pages/loading_page.dart';
 import 'package:fruit/pages/login_page.dart';
+import 'package:fruit/pages/notice_page.dart';
 import 'package:fruit/pages/user_info.dart';
 import 'package:fruit/routes.dart';
 import 'package:fruit/shared_model/app_environment_model.dart';
@@ -68,6 +69,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
                 detailItemPageRoute: (context) => const DetailItemPage(),
                 cartItemPageRoute: (context) => const CartPage(),
                 couponPageRoute: (context) => CouponPage(),
+                noticePageRoute: (context) => NoticePage(),
               },
               navigatorKey: navigatorKey,
             );
