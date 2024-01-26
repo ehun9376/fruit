@@ -3,6 +3,7 @@ import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
 import 'package:fruit/widget/tabButton/tab_button_row.dart';
+import 'package:fruit/widget/tabButton/tab_protocol.dart';
 import 'package:provider/provider.dart';
 
 class NoticePageViewModel extends ChangeNotifier {
