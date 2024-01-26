@@ -64,11 +64,13 @@ class SimpleText extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         textAlign: align,
         style: TextStyle(
-            decoration: decoration,
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: textColor,
-            fontStyle: style),
+          decoration: decoration,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          color: textColor,
+          fontStyle: style,
+          fontFamily: "PingFangTC",
+        ),
       );
     }
   }

@@ -3,6 +3,7 @@ import 'package:fruit/config.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/routes.dart';
+import 'package:fruit/widget/command/ec10_divider.dart';
 import 'package:fruit/widget/command/full_row_button.dart';
 import 'package:fruit/widget/command/title_subtitle_row.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
@@ -114,10 +115,7 @@ class UserInfoPage extends StatelessWidget {
             ).sizedBox(
               height: 100,
             ),
-            Container(
-              height: 10,
-              color: LayoutColor.greyECECEC,
-            ),
+            const EC10Divider(),
             const TitleSubTitleMoreRow(title: "帳戶相關")
                 .padding(const EdgeInsets.only(bottom: 15, top: 15)),
             ListView.separated(
@@ -139,23 +137,24 @@ class UserInfoPage extends StatelessWidget {
       titleFontSize: 14,
       subTitle: subTitle,
       showMoreIcon: true,
-    ).padding(const EdgeInsets.only(left: 20)).inkWell(onTap: () {
-      switch (type) {
-        case UserInfoPageType.userInfo:
-          break;
-        case UserInfoPageType.memberPoint:
-          break;
-        case UserInfoPageType.changePassword:
-          break;
-        case UserInfoPageType.helpService:
-          break;
-        case UserInfoPageType.contactUs:
-          break;
-        case UserInfoPageType.aboutUs:
-          break;
-        case UserInfoPageType.noticeSetting:
-          break;
-      }
-    });
+      onMoreTap: () {
+        switch (type) {
+          case UserInfoPageType.userInfo:
+            break;
+          case UserInfoPageType.memberPoint:
+            navigatorKey.currentState?.pushNamed(couponPageRoute);
+          case UserInfoPageType.changePassword:
+            break;
+          case UserInfoPageType.helpService:
+            break;
+          case UserInfoPageType.contactUs:
+            break;
+          case UserInfoPageType.aboutUs:
+            break;
+          case UserInfoPageType.noticeSetting:
+            break;
+        }
+      },
+    ).padding(const EdgeInsets.only(left: 20));
   }
 }

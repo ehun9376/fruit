@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 import 'package:quiver/iterables.dart';
 
 extension Styles on Widget {
+  ChangeNotifierProvider changeNotifierProvider<T extends ChangeNotifier>({
+    required T value,
+  }) {
+    return ChangeNotifierProvider<T>(
+      create: (context) => value,
+      builder: (context, child) {
+        return this;
+      },
+    );
+  }
+
   Widget buildBorderAround({required BuildContext context}) {
     return sizedBox(
       height: 120,
