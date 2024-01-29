@@ -1,3 +1,6 @@
+import 'package:fruit/api_service/api_connect.dart';
+import 'package:fruit/model/app_user.dart';
+
 class Result<T> {
   Result({
     required this.model,
@@ -8,7 +11,29 @@ class Result<T> {
   final T? model;
 }
 
-class ApiService {}
+class ApiService {
+  String? token;
+
+  static Future<Result<AppUser>> loginUser(AppUser user) async {
+    var result = await ApiClinet.connectApi(
+        apiAction: ApiAction.login,
+        httpMethod: HttpMethods.post,
+        header: HttpHeader.json,
+        withToken: false,
+        parameter: user.toJson());
+    if (result.errorMessage != null) {
+      return Result<AppUser>(
+        model: null,
+        errorMessage: result.errorMessage,
+      );
+    } else {
+      return Result<AppUser>(
+        model: AppUser.fromJson(result.model),
+        errorMessage: null,
+      );
+    }
+  }
+}
 
   
   // static Future<Result<DefaultMessageModel>> updateRecord(

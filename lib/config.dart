@@ -8,6 +8,6 @@ FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 // const firebaseDynamicLinkDomain = "https://caretale.page.link";
 
-// const storeReviewerEmail = "reviewer2023^05!@caretale.link";
+const storeReviewerEmail = "reviewer2024@gmail.com";
 
-
+const aesKey = "49OHrvpIxSGEHiMEIOvYt8S8/QIvhc5O";

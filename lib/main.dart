@@ -5,6 +5,7 @@ import 'package:fruit/get_it/get_it_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await EasyLocalization.ensureInitialized();
 
   // await FirebaseServiece.init();

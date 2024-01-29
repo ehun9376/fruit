@@ -5,15 +5,6 @@ import 'package:fruit/shared_preferences_key.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppEnvironmentModel extends ChangeNotifier {
-  ///有沒有訂閱
-  bool _isSubscribe = false;
-
-  bool get isSubscribe => _isSubscribe;
-  set isSubscribe(bool newValue) {
-    _isSubscribe = newValue;
-    notifyListeners();
-  }
-
   AppUser? _currentUser;
   AppUser? get currentUser => _currentUser;
   set currentUser(AppUser? newValue) {
