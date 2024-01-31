@@ -70,14 +70,6 @@ class ApiClinet {
       List<Map<String, dynamic>>? listParameter}) async {
     final Uri apiUrl = Uri.parse('$_baseUrl/${apiAction.path}/${suffix ?? ''}');
 
-    if (tryCount > 3) {
-      var result = Result(
-          model: null,
-          errorMessage: "Http error: ${tryCount.toString()} try failed.");
-      tryCount = 0;
-      return result;
-    }
-
     Response? response;
     parameter?.removeWhere((key, value) =>
         value == null ||
@@ -140,13 +132,17 @@ class ApiClinet {
       return Result(
           model: response.body.isNotEmpty ? json.decode(response.body) : null,
           errorMessage: null);
-    } else if (response.statusCode == 400) {
+    }
+    //重試超過三次
+    if (tryCount > 3) {
       var result = Result(
           model: null,
-          errorMessage: "${json.decode(response.body)['message']}");
+          errorMessage: "Http error: ${tryCount.toString()} try failed.");
       tryCount = 0;
       return result;
-    } else if (response.statusCode == 401) {
+    }
+    //Token過期
+    if (response.statusCode == 401) {
       tryCount++;
       await connectApi(
           httpMethod: HttpMethods.post,
@@ -166,6 +162,14 @@ class ApiClinet {
           suffix: suffix,
           parameter: parameter,
           listParameter: listParameter);
+    }
+
+    if (response.statusCode != 200) {
+      var result = Result(
+          model: null,
+          errorMessage: "${json.decode(response.body)['message']}");
+      tryCount = 0;
+      return result;
     } else {
       tryCount++;
       // call again

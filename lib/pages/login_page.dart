@@ -69,10 +69,13 @@ class LoginPage extends StatelessWidget {
   }
 
   void normalLogin() async {
+    var loading = showLoading();
     Result<AppUser> result = await AuthStore.normalSignin(
         appUser: AppUser(email: "ehun9999@gmail.com", password: "A58970953a"));
+    loading();
     if (result.errorMessage != null) {
       showAppSnackBar(result.errorMessage ?? "");
+      return null;
     } else if (result.model != null) {
       getIt<AppEnvironmentModel>().currentUser = result.model;
       navigatorKey.currentState
@@ -81,7 +84,16 @@ class LoginPage extends StatelessWidget {
   }
 
   void normalRegis() async {
-    await AuthStore.regis(
+    var loading = showLoading();
+    Result<AppUser> result = await AuthStore.regis(
         email: "ehun9999@gmail.com", password: "A58970953a", name: "GGG");
+    loading();
+    if (result.errorMessage != null) {
+      showAppSnackBar(result.errorMessage ?? "");
+    } else if (result.model != null) {
+      getIt<AppEnvironmentModel>().currentUser = result.model;
+      navigatorKey.currentState
+          ?.pushNamedAndRemoveUntil(mainHomePageRoute, (route) => false);
+    }
   }
 }

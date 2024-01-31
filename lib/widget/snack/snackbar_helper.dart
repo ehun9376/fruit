@@ -16,18 +16,17 @@ void showAppSnackBar(String message) {
   ));
 }
 
-/// 回傳一個讀取中的Dialog Function，會先顯示Dialog，並回傳一個關閉Dialog的Function。
-Future showLoadingDialog({
-  Future? future,
-  String message = "讀取中",
-}) async {
+///會先顯示loading，等待future執行完畢後，關閉loading，並回傳future的結果
+Function showLoading({
+  String? message,
+}) {
   final dialog = AlertDialog(
     content: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         const CircularProgressIndicator(color: Colors.black),
-        const SizedBox(height: 10.0),
-        Text(message),
+        if (message == null) const SizedBox(height: 10.0),
+        if (message == null) Text(message ?? ""),
       ],
     ),
   );
@@ -38,9 +37,9 @@ Future showLoadingDialog({
     builder: (context) => dialog,
   );
 
-  await future?.then((value) {
+  return () {
     Navigator.of(navigatorKey.currentContext!).pop();
-  });
+  };
 }
 
 showConfirmDialog(
