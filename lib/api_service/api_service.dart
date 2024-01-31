@@ -11,16 +11,36 @@ class Result<T> {
   final T? model;
 }
 
-class ApiService {
-  String? token;
+String? token;
 
+class ApiService {
   static Future<Result<AppUser>> loginUser(AppUser user) async {
     var result = await ApiClinet.connectApi(
         apiAction: ApiAction.login,
         httpMethod: HttpMethods.post,
         header: HttpHeader.json,
         withToken: false,
-        parameter: user.toJson());
+        parameter: user.toJson(isEncryptPassword: true));
+    if (result.errorMessage != null) {
+      return Result<AppUser>(
+        model: null,
+        errorMessage: result.errorMessage,
+      );
+    } else {
+      return Result<AppUser>(
+        model: AppUser.fromJson(result.model),
+        errorMessage: null,
+      );
+    }
+  }
+
+  static Future<Result<AppUser>> regisUser(AppUser user) async {
+    var result = await ApiClinet.connectApi(
+        apiAction: ApiAction.regis,
+        httpMethod: HttpMethods.post,
+        header: HttpHeader.json,
+        withToken: false,
+        parameter: user.toJson(isEncryptPassword: true));
     if (result.errorMessage != null) {
       return Result<AppUser>(
         model: null,

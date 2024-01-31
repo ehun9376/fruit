@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/config.dart';
 import 'package:fruit/extension/extension.dart';
+import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/routes.dart';
+import 'package:fruit/shared_model/app_environment_model.dart';
 import 'package:fruit/widget/command/ec10_divider.dart';
 import 'package:fruit/widget/command/full_row_button.dart';
 import 'package:fruit/widget/command/title_subtitle_row.dart';
@@ -59,16 +61,23 @@ class UserInfoPage extends StatelessWidget {
     }).toList(growable: false));
 
     widgetsList.add(FullRowButton(
-      buttonTitle: "登出",
+      buttonTitle:
+          getIt<AppEnvironmentModel>().currentUser == null ? "登入" : "登出",
       type: FullRowButtonType.orangeBgWhiteTitle,
       buttonAction: () {
-        showConfirmDialog(
+        if (getIt<AppEnvironmentModel>().currentUser == null) {
+          navigatorKey.currentState?.pushNamed(loginPageRoute);
+        } else {
+          showConfirmDialog(
             title: "提示",
             current: "確定要登出嗎",
             rightButtonOnTap: () {
+              getIt<AppEnvironmentModel>().currentUser = null;
               navigatorKey.currentState
                   ?.pushNamedAndRemoveUntil(loginPageRoute, (route) => false);
-            });
+            },
+          );
+        }
       },
     ).padding(const EdgeInsets.symmetric(horizontal: 50, vertical: 20)));
 
@@ -138,6 +147,11 @@ class UserInfoPage extends StatelessWidget {
       subTitle: subTitle,
       showMoreIcon: true,
       onMoreTap: () {
+        if (getIt<AppEnvironmentModel>().currentUser == null) {
+          navigatorKey.currentState?.pushNamed(loginPageRoute);
+          return;
+        }
+
         switch (type) {
           case UserInfoPageType.userInfo:
             break;

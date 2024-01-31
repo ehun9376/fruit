@@ -23,7 +23,7 @@ class AdSwiperViewModel extends ChangeNotifier {
 }
 
 class AdSwiper extends StatefulWidget {
-  AdSwiper({super.key});
+  const AdSwiper({super.key});
 
   @override
   State<AdSwiper> createState() => _AdSwiperState();
@@ -34,7 +34,6 @@ class _AdSwiperState extends State<AdSwiper> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     viewModel = null;
   }

@@ -16,13 +16,16 @@ enum HttpMethods {
 
 enum ApiAction {
   login,
+  regis,
 }
 
 extension ApiActionName on ApiAction {
   String get path {
     switch (this) {
       case ApiAction.login:
-        return "/login";
+        return "login";
+      case ApiAction.regis:
+        return "signup";
     }
   }
 }
@@ -37,13 +40,13 @@ extension HeaderValue on HttpHeader {
         dict = {
           'Content-type': 'application/json',
           'Accept': 'application/json',
-          if (withToken) 'Authorization': 'Bearer ${getIt<ApiService>().token}',
+          if (withToken) 'Authorization': 'Bearer $token',
         };
       case HttpHeader.form:
         dict = {
           'Content-type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
-          if (withToken) 'Authorization': 'Bearer ${getIt<ApiService>().token}',
+          if (withToken) 'Authorization': 'Bearer $token',
         };
       case HttpHeader.none:
         dict = {};
@@ -55,7 +58,7 @@ extension HeaderValue on HttpHeader {
 int tryCount = 0;
 
 class ApiClinet {
-  static const String _baseUrl = "https://caretale-api-dev.icavemen.com";
+  static const String _baseUrl = "http://13.210.140.180:8001";
 
   static Future<Result<dynamic>> connectApi(
       {HttpMethods httpMethod = HttpMethods.post,
@@ -68,9 +71,11 @@ class ApiClinet {
     final Uri apiUrl = Uri.parse('$_baseUrl/${apiAction.path}/${suffix ?? ''}');
 
     if (tryCount > 3) {
-      return Result(
+      var result = Result(
           model: null,
           errorMessage: "Http error: ${tryCount.toString()} try failed.");
+      tryCount = 0;
+      return result;
     }
 
     Response? response;
@@ -129,12 +134,18 @@ class ApiClinet {
       tryCount = 0;
 
       if (apiAction == ApiAction.login) {
-        getIt<ApiService>().token = json.decode(response.body)['token'];
+        token = json.decode(response.body)['token'];
       }
 
       return Result(
           model: response.body.isNotEmpty ? json.decode(response.body) : null,
           errorMessage: null);
+    } else if (response.statusCode == 400) {
+      var result = Result(
+          model: null,
+          errorMessage: "${json.decode(response.body)['message']}");
+      tryCount = 0;
+      return result;
     } else if (response.statusCode == 401) {
       tryCount++;
       await connectApi(

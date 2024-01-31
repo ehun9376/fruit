@@ -53,14 +53,13 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           selector: (context, model) => model.currentUser,
           builder: (context, user, child) {
             debugPrint("######DDDD===>> user: $user");
-            var initPage = const LoadingPage();
 
             return MaterialApp(
               key: UniqueKey(),
               debugShowCheckedModeBanner: false,
               // localizationsDelegates: context.localizationDelegates,
               // locale: context.locale,
-              home: initPage,
+              home: const LoadingPage(),
               routes: {
                 loginPageRoute: (context) => const LoginPage(),
                 loadingPageRoute: (context) => const LoadingPage(),

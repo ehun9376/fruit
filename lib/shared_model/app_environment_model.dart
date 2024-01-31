@@ -14,8 +14,8 @@ class AppEnvironmentModel extends ChangeNotifier {
 
     SharedPreferences.getInstance().then((value) {
       if (newValue != null) {
-        value.setString(
-            SharedPreferenceKey.appUser, jsonEncode(newValue.toJson()));
+        value.setString(SharedPreferenceKey.appUser,
+            jsonEncode(newValue.toJson(isEncryptPassword: false)));
       } else {
         value.remove(SharedPreferenceKey.appUser);
       }
