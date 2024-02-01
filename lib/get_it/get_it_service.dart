@@ -12,8 +12,8 @@ GetIt getIt = GetIt.instance;
 
 class GetItService {
   static Future<void> initialize() async {
-    getIt.registerLazySingleton<AppEnvironmentModel>(
-        () => AppEnvironmentModel());
+    getIt.registerLazySingleton<AppUserEnvironmentModel>(
+        () => AppUserEnvironmentModel());
     getIt.registerLazySingleton<TrackItemsModol>(() => TrackItemsModol());
     getIt.registerLazySingleton<CartItemsModel>(() => CartItemsModel());
 

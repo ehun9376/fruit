@@ -51,16 +51,17 @@ class AuthStore {
     var appUser = appUserResult.model;
 
     if (appUser != null) {
-      getIt<AppEnvironmentModel>().currentUser = appUser;
+      getIt<AppUserEnvironmentModel>().currentUser = appUser;
     }
   }
 
   static Future<AppUser> loginWithReviewer() async {
     AppUser user = AppUser(email: storeReviewerEmail, password: "AAAAAA");
-    getIt<AppEnvironmentModel>().currentUser = user;
-    await ApiService.loginUser(user);
+    getIt<AppUserEnvironmentModel>().currentUser = user;
 
-    return user;
+    var appUserResult = await normalSignin(appUser: user);
+
+    return appUserResult.model ?? user;
   }
 
   //Google登入： 透過Google登入取得UserCredential，轉成AppUser傳給ApiService
@@ -69,9 +70,9 @@ class AuthStore {
     if (result.errorMessage != null) {
       return Result<AppUser>(model: null, errorMessage: result.errorMessage);
     } else {
-      var loginUser = conventCredentialToAppUser(result.model);
+      AppUser loginUser = conventCredentialToAppUser(result.model);
 
-      var appUserResult = await ApiService.loginUser(loginUser);
+      var appUserResult = await normalSignin(appUser: loginUser);
 
       return Result<AppUser>(
           model: appUserResult.model, errorMessage: appUserResult.errorMessage);
@@ -84,27 +85,13 @@ class AuthStore {
     if (result.errorMessage != null) {
       return Result<AppUser>(model: null, errorMessage: result.errorMessage);
     } else {
-      var loginUser = conventCredentialToAppUser(result.model);
+      AppUser loginUser = conventCredentialToAppUser(result.model);
 
-      var appUserResult = await ApiService.loginUser(loginUser);
+      var appUserResult = await normalSignin(appUser: loginUser);
 
       return Result<AppUser>(
           model: appUserResult.model, errorMessage: appUserResult.errorMessage);
     }
-  }
-
-  ///一般登入:
-  static Future<Result<AppUser>> normalSignin(
-      {required AppUser appUser}) async {
-    var user = AppUser(email: appUser.email, password: appUser.password);
-    var appUserResult = await ApiService.loginUser(user);
-
-    if (appUserResult.errorMessage != null) {
-      return Result<AppUser>(
-          model: null, errorMessage: appUserResult.errorMessage);
-    }
-
-    return Result<AppUser>(model: user, errorMessage: null);
   }
 
   ///自動登入，將存在SharedPreferences的AppUser傳給ApiService
@@ -128,6 +115,20 @@ class AuthStore {
     }
     return Result<AppUser>(
         errorMessage: result.errorMessage, model: result.model);
+  }
+
+  ///一般登入:
+  static Future<Result<AppUser>> normalSignin(
+      {required AppUser appUser}) async {
+    var user = AppUser(email: appUser.email, password: appUser.password);
+    var appUserResult = await ApiService.loginUser(user);
+
+    if (appUserResult.errorMessage != null) {
+      return Result<AppUser>(
+          model: null, errorMessage: appUserResult.errorMessage);
+    }
+
+    return Result<AppUser>(model: user, errorMessage: null);
   }
 
   ///將Firebase登入取得的使用者資料轉成Server要的格式

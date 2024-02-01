@@ -50,7 +50,7 @@ class _LoadingPageState extends State<LoadingPage> {
           ?.pushNamedAndRemoveUntil(loginPageRoute, (route) => false);
       showAppSnackBar(result.errorMessage ?? "");
     } else if (result.model != null) {
-      getIt<AppEnvironmentModel>().currentUser = result.model;
+      getIt<AppUserEnvironmentModel>().currentUser = result.model;
       navigatorKey.currentState
           ?.pushNamedAndRemoveUntil(mainHomePageRoute, (route) => false);
     }

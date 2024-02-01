@@ -17,6 +17,8 @@ enum HttpMethods {
 enum ApiAction {
   login,
   regis,
+
+  pointHistory,
 }
 
 extension ApiActionName on ApiAction {
@@ -26,6 +28,8 @@ extension ApiActionName on ApiAction {
         return "login";
       case ApiAction.regis:
         return "signup";
+      case ApiAction.pointHistory:
+        return "users/points/history";
     }
   }
 }
@@ -151,8 +155,8 @@ class ApiClinet {
           header: HttpHeader.json,
           suffix: ApiAction.login.path,
           parameter: {
-            "email": getIt<AppEnvironmentModel>().currentUser?.email,
-            "password": getIt<AppEnvironmentModel>().currentUser?.password,
+            "email": getIt<AppUserEnvironmentModel>().currentUser?.email,
+            "password": getIt<AppUserEnvironmentModel>().currentUser?.password,
           });
       return await connectApi(
           httpMethod: httpMethod,

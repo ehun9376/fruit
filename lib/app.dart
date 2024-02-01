@@ -24,7 +24,8 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
-  final AppEnvironmentModel appEnvironmentModel = getIt<AppEnvironmentModel>();
+  final AppUserEnvironmentModel appEnvironmentModel =
+      getIt<AppUserEnvironmentModel>();
   final TrackItemsModol trackItemsModol = getIt<TrackItemsModol>();
   final CartItemsModel cartItemsModel = getIt<CartItemsModel>();
 
@@ -44,12 +45,12 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<AppEnvironmentModel>.value(
+          ChangeNotifierProvider<AppUserEnvironmentModel>.value(
               value: appEnvironmentModel),
           ChangeNotifierProvider<TrackItemsModol>.value(value: trackItemsModol),
           ChangeNotifierProvider<CartItemsModel>.value(value: cartItemsModel),
         ],
-        child: Selector<AppEnvironmentModel, AppUser?>(
+        child: Selector<AppUserEnvironmentModel, AppUser?>(
           selector: (context, model) => model.currentUser,
           builder: (context, user, child) {
             debugPrint("######DDDD===>> user: $user");

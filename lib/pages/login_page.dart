@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
       showAppSnackBar(result.errorMessage ?? "");
       return null;
     } else if (result.model != null) {
-      getIt<AppEnvironmentModel>().currentUser = result.model;
+      getIt<AppUserEnvironmentModel>().currentUser = result.model;
       navigatorKey.currentState
           ?.pushNamedAndRemoveUntil(mainHomePageRoute, (route) => false);
     }
@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
     if (result.errorMessage != null) {
       showAppSnackBar(result.errorMessage ?? "");
     } else if (result.model != null) {
-      getIt<AppEnvironmentModel>().currentUser = result.model;
+      getIt<AppUserEnvironmentModel>().currentUser = result.model;
       navigatorKey.currentState
           ?.pushNamedAndRemoveUntil(mainHomePageRoute, (route) => false);
     }

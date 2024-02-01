@@ -62,17 +62,17 @@ class UserInfoPage extends StatelessWidget {
 
     widgetsList.add(FullRowButton(
       buttonTitle:
-          getIt<AppEnvironmentModel>().currentUser == null ? "登入" : "登出",
+          getIt<AppUserEnvironmentModel>().currentUser == null ? "登入" : "登出",
       type: FullRowButtonType.orangeBgWhiteTitle,
       buttonAction: () {
-        if (getIt<AppEnvironmentModel>().currentUser == null) {
+        if (getIt<AppUserEnvironmentModel>().currentUser == null) {
           navigatorKey.currentState?.pushNamed(loginPageRoute);
         } else {
           showConfirmDialog(
             title: "提示",
             current: "確定要登出嗎",
             rightButtonOnTap: () {
-              getIt<AppEnvironmentModel>().currentUser = null;
+              getIt<AppUserEnvironmentModel>().currentUser = null;
               navigatorKey.currentState
                   ?.pushNamedAndRemoveUntil(loginPageRoute, (route) => false);
             },
@@ -147,7 +147,7 @@ class UserInfoPage extends StatelessWidget {
       subTitle: subTitle,
       showMoreIcon: true,
       onMoreTap: () {
-        if (getIt<AppEnvironmentModel>().currentUser == null) {
+        if (getIt<AppUserEnvironmentModel>().currentUser == null) {
           navigatorKey.currentState?.pushNamed(loginPageRoute);
           return;
         }

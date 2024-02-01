@@ -1,5 +1,6 @@
 import 'package:fruit/api_service/api_connect.dart';
 import 'package:fruit/model/app_user.dart';
+import 'package:fruit/model/point_history/point_history.dart';
 
 class Result<T> {
   Result({
@@ -14,6 +15,7 @@ class Result<T> {
 String? token;
 
 class ApiService {
+  //登入
   static Future<Result<AppUser>> loginUser(AppUser user) async {
     var result = await ApiClinet.connectApi(
         apiAction: ApiAction.login,
@@ -34,6 +36,7 @@ class ApiService {
     }
   }
 
+  //註冊
   static Future<Result<AppUser>> regisUser(AppUser user) async {
     var result = await ApiClinet.connectApi(
         apiAction: ApiAction.regis,
@@ -53,27 +56,25 @@ class ApiService {
       );
     }
   }
+
+  //點數歷史紀錄 pointHistory
+  static Future<Result<PointHistoryModel>> getPointHistory() async {
+    var result = await ApiClinet.connectApi(
+        apiAction: ApiAction.pointHistory,
+        httpMethod: HttpMethods.get,
+        header: HttpHeader.json,
+        withToken: true,
+        parameter: null);
+    if (result.errorMessage != null) {
+      return Result<PointHistoryModel>(
+        model: null,
+        errorMessage: result.errorMessage,
+      );
+    } else {
+      return Result<PointHistoryModel>(
+        model: PointHistoryModel.fromJson(result.model),
+        errorMessage: null,
+      );
+    }
+  }
 }
-
-  
-  // static Future<Result<DefaultMessageModel>> updateRecord(
-  //     RecordModel model) async {
-  //   Result<dynamic> result = await ApiClinet.connectApi(
-  //       apiAction: ApiAction.record,
-  //       httpMethod: HttpMethods.patch,
-  //       suffix: model.id,
-  //       parameter: model.toJson());
-  //   if (result.errorMessage != null) {
-  //     return Result<DefaultMessageModel>(
-  //       model: null,
-  //       errorMessage: result.errorMessage,
-  //     );
-  //   } else {
-  //     return Result<DefaultMessageModel>(
-  //       model: DefaultMessageModel.fromJson(result.model),
-  //       errorMessage: null,
-  //     );
-  //   }
-  // }
-
-

@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit/aes/aes.dart';
+import 'package:fruit/encrypt/encrypt.dart';
 import 'package:fruit/app.dart';
 import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/lauguage/lauguage.dart';
