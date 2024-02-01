@@ -10,6 +10,7 @@ class PassButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleButton(
+      autoSize: true,
       buttontitle: "略過，直接前往賣場",
       titleColor: LayoutColor.orangeF57C00,
       fontWeight: FontWeight.bold,

@@ -21,50 +21,52 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            const LogoSlogan(),
-            const SizedBox(height: 20),
-            FullRowButton(
-              buttonTitle: "登入",
-              type: FullRowButtonType.whiteBgOrangeTitle,
-              buttonAction: () {
-                //todo: - 先直接登入，之後要改成跳轉到登入頁面
-                normalLogin();
-              },
-            ),
-            const SizedBox(height: 20),
-            FullRowButton(
-              buttonTitle: "註冊",
-              buttonAction: () {
-                normalRegis();
-              },
-              type: FullRowButtonType.orangeBgWhiteTitle,
-            ),
-            const SizedBox(height: 20),
-            const OrLine(),
-            const SizedBox(height: 20),
-            ThirdLoginButton(loginType: LoginType.phone, buttonAction: () {}),
-            const SizedBox(height: 20),
-            ThirdLoginButton(loginType: LoginType.apple, buttonAction: () {}),
-            const SizedBox(height: 20),
-            ThirdLoginButton(
-                loginType: LoginType.facebook, buttonAction: () {}),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                PassButton(
-                  buttonAction: () {
-                    navigatorKey.currentState?.pushNamedAndRemoveUntil(
-                        mainHomePageRoute, (route) => false);
-                  },
-                ),
-              ],
-            ).flexible()
-          ],
-        ).padding(const EdgeInsets.symmetric(horizontal: 40, vertical: 40)),
-      ),
+          color: Colors.white,
+          child: Column(
+            children: [
+              ListView(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+                children: [
+                  const LogoSlogan(),
+                  const SizedBox(height: 20),
+                  FullRowButton(
+                    buttonTitle: "登入",
+                    type: FullRowButtonType.whiteBgOrangeTitle,
+                    buttonAction: () {
+                      //todo: - 先直接登入，之後要改成跳轉到登入頁面
+                      normalLogin();
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  FullRowButton(
+                    buttonTitle: "註冊",
+                    buttonAction: () {
+                      normalRegis();
+                    },
+                    type: FullRowButtonType.orangeBgWhiteTitle,
+                  ),
+                  const SizedBox(height: 20),
+                  const OrLine(),
+                  const SizedBox(height: 20),
+                  ThirdLoginButton(
+                      loginType: LoginType.phone, buttonAction: () {}),
+                  const SizedBox(height: 20),
+                  ThirdLoginButton(
+                      loginType: LoginType.apple, buttonAction: () {}),
+                  const SizedBox(height: 20),
+                  ThirdLoginButton(
+                      loginType: LoginType.facebook, buttonAction: () {}),
+                ],
+              ).flexible(),
+              PassButton(
+                buttonAction: () {
+                  navigatorKey.currentState?.pushNamedAndRemoveUntil(
+                      mainHomePageRoute, (route) => false);
+                },
+              ).padding(const EdgeInsets.only(bottom: 20)),
+            ],
+          )),
     );
   }
 

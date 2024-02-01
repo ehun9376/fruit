@@ -49,34 +49,38 @@ class ThirdLoginButton extends StatelessWidget {
   final Function buttonAction;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 45,
-      decoration: BoxDecoration(
-        border: Border.all(color: LayoutColor.greyE7E7E7, width: 1),
-        borderRadius: BorderRadius.circular(25),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        minHeight: 45,
       ),
-      child: [
-        SimpleImage(
-          imageName: loginType.logoName,
-          size: const Size(25, 25),
-        ).padding(const EdgeInsets.only(left: 15)),
-        SimpleButton(
-          titleColor: LayoutColor.grey515151,
-          buttontitle: loginType.buttonTitle,
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
-          buttonAction: () {
-            buttonAction();
-          },
-          // align: TextAlign.center,
-        ).flexible(),
-        const SizedBox(
-          width: 35,
-        )
-      ].row(MainAxisAlignment.center),
-    )
-        .flexible()
-        .widgetWithRow()
-        .padding(const EdgeInsets.symmetric(horizontal: 15));
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: LayoutColor.greyE7E7E7, width: 1),
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: [
+          SimpleImage(
+            imageName: loginType.logoName,
+            size: const Size(25, 25),
+          ).padding(const EdgeInsets.only(left: 15)),
+          SimpleButton(
+            titleColor: LayoutColor.grey515151,
+            buttontitle: loginType.buttonTitle,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            buttonAction: () {
+              buttonAction();
+            },
+            // align: TextAlign.center,
+          ).flexible(),
+          const SizedBox(
+            width: 35,
+          )
+        ].row(MainAxisAlignment.center),
+      )
+          .flexible()
+          .widgetWithRow()
+          .padding(const EdgeInsets.symmetric(horizontal: 15)),
+    );
   }
 }
