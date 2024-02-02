@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit/layout/layout_guides.dart';
 import 'package:fruit/model/coupon/coupon_model.dart';
@@ -47,12 +48,11 @@ class CouponPage extends StatelessWidget {
               return ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 5,
+                itemCount: (value?.length ?? 0) <= 5 ? (value?.length ?? 0) : 5,
                 itemBuilder: (BuildContext context, int index) {
                   if (value == null || index >= value.length) {
                     return Container();
                   }
-
                   return TitleSubTitleMoreRow(
                     title: value[index].createdAt ?? "",
                     subTitle:
@@ -69,20 +69,14 @@ class CouponPage extends StatelessWidget {
           const EC10Divider(),
           const TitleSubTitleMoreRow(title: "我的優惠券")
               .padding(const EdgeInsets.symmetric(vertical: 20)),
-          Selector<AppUserEnvironmentModel, List<CouponModel>?>(
+          Selector<AppUserEnvironmentModel, List<CouponModel>>(
             selector: (p0, p1) => p1.couponHistory,
             builder: (context, value, child) {
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: value?.length,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (BuildContext context, int index) {
-                  if (value == null) {
-                    return Container();
-                  }
-                  return CouponCard(couponModel: value[index]);
-                },
+              return Column(
+                children: value
+                    .mapIndexed(
+                        (index, element) => CouponCard(couponModel: element))
+                    .toList(),
               );
             },
           ),

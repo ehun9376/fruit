@@ -51,7 +51,7 @@ class SortFiltterRow extends StatelessWidget {
           ],
         ).container(
           color: Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
         ),
         Divider(
           height: 1,

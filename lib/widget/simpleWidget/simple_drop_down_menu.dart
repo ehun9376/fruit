@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/extension/extension.dart';
 import 'package:fruit/layout/layout_guides.dart';
+import 'package:fruit/widget/simpleWidget/simple_image.dart';
 import 'package:fruit/widget/simpleWidget/simple_text.dart';
 
 abstract class MenuItemModel {
@@ -45,40 +46,41 @@ class SimpleDropdownMenuState<T extends MenuItemModel>
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<T>(
-      alignment: Alignment.center,
-      // icon: null,
-      // iconSize: 0,
-      // isDense: true,
-      padding: EdgeInsets.zero,
-      hint: const SimpleText(
-        text: "Please Select",
-      ),
-      underline: Container(),
-      value: _dropdownItems.isNotEmpty
-          ? _dropdownItems.firstWhere(
-              (element) => element.displayName == _selectedItem?.displayName)
-          : null,
-      onChanged: (newValue) {
-        setState(() {
-          _selectedItem = newValue;
-        });
-        if (newValue != null) {
-          onChange(newValue);
-        }
+    return PopupMenuButton<T>(
+      itemBuilder: (context) {
+        return _dropdownItems.map((item) {
+          return PopupMenuItem<T>(
+            value: item,
+            child: SimpleText(
+              text: item.displayName,
+              align: TextAlign.center,
+              textColor: LayoutColor.black212121,
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ).padding(const EdgeInsets.symmetric(vertical: 10)),
+          );
+        }).toList();
       },
-      items: _dropdownItems.map((item) {
-        return DropdownMenuItem<T>(
-          value: item,
-          child: SimpleText(
-            text: item.displayName,
+      child: Row(
+        children: [
+          SimpleText(
+            text: _selectedItem?.displayName ?? "",
             align: TextAlign.center,
             textColor: LayoutColor.black212121,
             fontSize: 15,
             fontWeight: FontWeight.w500,
           ).padding(const EdgeInsets.symmetric(vertical: 10)),
-        );
-      }).toList(),
+          const SimpleImage(
+            icon: Icons.arrow_drop_down_sharp,
+          )
+        ],
+      ),
+      onSelected: (newValue) {
+        setState(() {
+          _selectedItem = newValue;
+        });
+        onChange(newValue);
+      },
     );
   }
 }

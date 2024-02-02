@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:fruit/api_service/api_service.dart';
-import 'package:fruit/auth/auth_store.dart';
 import 'package:fruit/model/app_user.dart';
-import 'package:fruit/model/coupon/coupon_history_model.dart';
 import 'package:fruit/model/coupon/coupon_model.dart';
 import 'package:fruit/model/point_history/point_history.dart';
 import 'package:fruit/shared_preferences_key.dart';
@@ -27,7 +25,9 @@ class AppUserEnvironmentModel extends ChangeNotifier {
         value.remove(SharedPreferenceKey.appUser);
       }
 
-      loadUserPointHistory();
+      if (newValue != null) {
+        loadUserPointHistory();
+      }
     });
   }
 
@@ -38,9 +38,9 @@ class AppUserEnvironmentModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<CouponModel>? _couponHistory;
-  List<CouponModel>? get couponHistory => _couponHistory;
-  set couponHistory(List<CouponModel>? newValue) {
+  List<CouponModel> _couponHistory = [];
+  List<CouponModel> get couponHistory => _couponHistory;
+  set couponHistory(List<CouponModel> newValue) {
     _couponHistory = newValue;
     notifyListeners();
   }
