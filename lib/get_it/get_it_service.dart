@@ -5,6 +5,7 @@ import 'package:fruit/service/email_store/email_store.dart';
 import 'package:fruit/service/firebase_auth/firebase_auth_store.dart';
 import 'package:fruit/shared_model/app_environment_model.dart';
 import 'package:fruit/shared_model/cart_items_model.dart';
+import 'package:fruit/shared_model/home_page_model.dart';
 import 'package:fruit/shared_model/track_items_model.dart';
 import 'package:get_it/get_it.dart';
 
@@ -16,6 +17,7 @@ class GetItService {
         () => AppUserEnvironmentModel());
     getIt.registerLazySingleton<TrackItemsModol>(() => TrackItemsModol());
     getIt.registerLazySingleton<CartItemsModel>(() => CartItemsModel());
+    getIt.registerLazySingleton<HomePageModel>(() => HomePageModel());
 
     getIt.registerLazySingleton<FirebaseAuthStroe>(() => FirebaseAuthStroe());
 

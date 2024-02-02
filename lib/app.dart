@@ -13,6 +13,7 @@ import 'package:fruit/pages/user_info.dart';
 import 'package:fruit/routes.dart';
 import 'package:fruit/shared_model/app_environment_model.dart';
 import 'package:fruit/shared_model/cart_items_model.dart';
+import 'package:fruit/shared_model/home_page_model.dart';
 import 'package:fruit/shared_model/track_items_model.dart';
 import 'package:provider/provider.dart';
 
@@ -32,6 +33,8 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+
+    getIt<HomePageModel>().getAdListModel();
   }
 
   @override
@@ -68,7 +71,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
                 userInfoPageRoute: (context) => const UserInfoPage(),
                 detailItemPageRoute: (context) => const DetailItemPage(),
                 cartItemPageRoute: (context) => const CartPage(),
-                couponPageRoute: (context) => CouponPage(),
+                couponPageRoute: (context) => const CouponPage(),
                 noticePageRoute: (context) => NoticePage(),
               },
               navigatorKey: navigatorKey,

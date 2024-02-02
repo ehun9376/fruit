@@ -17,7 +17,7 @@ void main() async {
   // await getIt<LocalNotificationCenter>().init();
 
   // await AppTrackingTransparency.requestTrackingAuthorization();
-  runApp(const MainApp());
+  // runApp(const MainApp());
   runApp(EasyLocalization(
     supportedLocales: Language.values.map((e) => e.locale).toList(),
     path: "assets/translations",

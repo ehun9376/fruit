@@ -61,8 +61,9 @@ class SimpleImage extends StatelessWidget {
                     size: iconSize,
                     color: color,
                   )
-                : (imageURL == null
-                    ? Image.asset(
+                : (imageURL != null
+                    ? getImageFromNet(imageURL ?? "")
+                    : Image.asset(
                         imageName != null
                             ? 'assets/$imageName'
                             : "assets/defaultHeadImage.png",
@@ -70,8 +71,7 @@ class SimpleImage extends StatelessWidget {
                         width: size?.width,
                         fit: fit ?? BoxFit.fill,
                         color: color,
-                      )
-                    : getImageFromNet(imageURL ?? "")),
+                      )),
       ),
     );
   }

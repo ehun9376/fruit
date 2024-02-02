@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fruit/api_service/api_service.dart';
+import 'package:fruit/api_service/model/result.dart';
 import 'package:fruit/auth/auth_store.dart';
 import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/service/email_store/email_store.dart';

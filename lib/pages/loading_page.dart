@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/api_service/api_service.dart';
+import 'package:fruit/api_service/model/result.dart';
 import 'package:fruit/auth/auth_store.dart';
 import 'package:fruit/config.dart';
 import 'package:fruit/get_it/get_it_service.dart';

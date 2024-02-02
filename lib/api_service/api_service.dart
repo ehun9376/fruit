@@ -1,16 +1,9 @@
 import 'package:fruit/api_service/api_connect.dart';
+import 'package:fruit/api_service/model/api_action.dart';
+import 'package:fruit/api_service/model/result.dart';
+import 'package:fruit/model/ad_model.dart';
 import 'package:fruit/model/app_user.dart';
 import 'package:fruit/model/point_history/point_history.dart';
-
-class Result<T> {
-  Result({
-    required this.model,
-    required this.errorMessage,
-  });
-
-  final String? errorMessage;
-  final T? model;
-}
 
 String? token;
 
@@ -73,6 +66,28 @@ class ApiService {
     } else {
       return Result<PointHistoryModel>(
         model: PointHistoryModel.fromJson(result.model),
+        errorMessage: null,
+      );
+    }
+  }
+
+  //取得廣告列表
+
+  static Future<Result<AdListModel>> getAdList() async {
+    var result = await ApiClinet.connectApi(
+        apiAction: ApiAction.getAdsList,
+        httpMethod: HttpMethods.get,
+        header: HttpHeader.json,
+        withToken: true,
+        parameter: null);
+    if (result.errorMessage != null) {
+      return Result<AdListModel>(
+        model: null,
+        errorMessage: result.errorMessage,
+      );
+    } else {
+      return Result<AdListModel>(
+        model: AdListModel.fromJson(result.model),
         errorMessage: null,
       );
     }

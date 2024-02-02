@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:fruit/api_service/api_service.dart';
+import 'package:fruit/api_service/model/api_action.dart';
+import 'package:fruit/api_service/model/result.dart';
 import 'package:fruit/get_it/get_it_service.dart';
 import 'package:fruit/shared_model/app_environment_model.dart';
 import 'package:http/http.dart';
@@ -12,26 +14,6 @@ enum HttpMethods {
   put,
   delete,
   patch,
-}
-
-enum ApiAction {
-  login,
-  regis,
-
-  pointHistory,
-}
-
-extension ApiActionName on ApiAction {
-  String get path {
-    switch (this) {
-      case ApiAction.login:
-        return "login";
-      case ApiAction.regis:
-        return "signup";
-      case ApiAction.pointHistory:
-        return "users/points/history";
-    }
-  }
 }
 
 enum HttpHeader { json, form, none }
@@ -156,7 +138,8 @@ class ApiClinet {
           suffix: ApiAction.login.path,
           parameter: {
             "email": getIt<AppUserEnvironmentModel>().currentUser?.email,
-            "password": getIt<AppUserEnvironmentModel>().currentUser?.password,
+            "password":
+                getIt<AppUserEnvironmentModel>().currentUser?.encryptPassword,
           });
       return await connectApi(
           httpMethod: httpMethod,
