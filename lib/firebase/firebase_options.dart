@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDrh1dE3rvlN-0yrYxAyYBZ4l9aZx775-s',
-    appId: '1:438407544740:android:179ea668573d41747e0b31',
-    messagingSenderId: '438407544740',
-    projectId: 'caretale',
-    storageBucket: 'caretale.appspot.com',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    storageBucket: '',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBBM4ANSvDi9p4CIffwVsuktTjFm_bE2xk',
-    appId: '1:438407544740:ios:fd3b408648a58c137e0b31',
-    messagingSenderId: '438407544740',
-    projectId: 'caretale',
-    storageBucket: 'caretale.appspot.com',
-    iosClientId:
-        '438407544740-d9rdlr3e4puig5qs43846mdvp2ki7n2l.apps.googleusercontent.com',
-    iosBundleId: 'org.caretale.ios',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    storageBucket: '',
+    iosClientId: '',
+    iosBundleId: '',
   );
 }
