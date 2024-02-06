@@ -6,7 +6,7 @@ class HomePageModel extends ChangeNotifier {
   AdListModel? _adListModel;
   AdListModel? get adListModel => _adListModel;
   set adListModel(AdListModel? newValue) {
-    adListModel = newValue;
+    _adListModel = newValue;
     notifyListeners();
   }
 
